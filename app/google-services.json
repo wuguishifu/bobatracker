@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "368689601828",
+    "firebase_url": "https://boba-5726b.firebaseio.com",
+    "project_id": "boba-5726b",
+    "storage_bucket": "boba-5726b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368689601828:android:45fc5a674f988bf7e127b1",
+        "android_client_info": {
+          "package_name": "com.example.bobatrackerv001"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368689601828-gpjgl6ep8kfmr8bmm8bhv5p1sp0p8bil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVtFmKgfoHwFqWbxZ_mitv4YjwX7SirzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368689601828-gpjgl6ep8kfmr8bmm8bhv5p1sp0p8bil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

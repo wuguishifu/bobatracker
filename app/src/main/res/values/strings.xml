@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Boba Tracker v. 0.0.1</string>
+    <string name="boba_ntracker">Boba\nTracker</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="view_history">View History</string>
+    <string name="add_order">Add Order</string>
+</resources>
