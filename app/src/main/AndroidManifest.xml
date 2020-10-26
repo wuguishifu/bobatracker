@@ -17,9 +17,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.bobatrackerv001.HomeActivity"
-                  android:label="home_activity">
-        </activity>
     </application>
 
 </manifest>

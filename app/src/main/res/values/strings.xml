@@ -7,4 +7,10 @@
     <string name="password">Password</string>
     <string name="view_history">View History</string>
     <string name="add_order">Add Order</string>
+    <string name="appName">Boba Tracker</string>
+    <string name="usernameTitle">username</string>
+    <string name="show_password_button">Show</string>
+    <string name="hide_password_button">Hide</string>
+    <string name="button_login_text">Login</string>
+    <string name="sign_up_button_text">Sign Up</string>
 </resources>
