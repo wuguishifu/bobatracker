@@ -13,4 +13,5 @@
     <color name="gray1">#FFF6F6F6</color>
     <color name="gray3">#FF6E6E6E</color>
     <color name="transparent">#00000000</color>
+    <color name="red">#FFFF0000</color>
 </resources>

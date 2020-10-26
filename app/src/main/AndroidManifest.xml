@@ -9,12 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BobaTrackerV001">
-        <activity android:name="com.example.bobatrackerv001.MainActivity">
+
+        <!--login page activity-->
+        <activity android:name="com.example.bobatrackerv001.login_page.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!--home page activity-->
+        <activity android:name=".home_page.HomeActivity">
+
+        </activity>
+
+        <activity android:name=".signup_page.SignupActivity">
+
         </activity>
 
     </application>
