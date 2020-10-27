@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -26,10 +27,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private static boolean passwordIsShown;
 
+    private static final String SHARED_PREFS = "sharedPrefs";
+    private static final String AUTH = "authPref";
+    private static final String USERNAME = "usernamePref";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // if the app is authenticated just go ahead and launch the home page instead of going
+        // through the whole sign in process. There's probably a better way of doing this but
+        // as of now i'm not entirely sure.
+        if (checkAuth()) {
+            launchHomePage();
+        }
 
         EditText passwordEntry = findViewById(R.id.password_entry);
 
@@ -68,12 +80,23 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(DataSnapshot passwordSnapshot) {
                     System.out.println("Found password");
                     if (passwordSnapshot.getValue() != null && passwordSnapshot.getValue().toString().equals(password)) {
-                        //if the password is correct, launch the new activity
+                        // if the password is correct, launch the new activity
                         Log.d("SUCCESS", "Launching Home Page");
+
+                        // save the authentication in the sharedPreferences of this app
+                        saveAuthentication(username);
+
+                        // retrieve order history to populate the OrderList
+                        getOrderHistory();
+
+                        // launch the home page
                         launchHomePage();
+
                     } else {
-                        //if the password is incorrect
+                        // if the password is incorrect
                         toggleLoginError();
+
+                        // send a message to the log
                         Log.d("ERROR", "Password Incorrect");
                     }
                 }
@@ -91,13 +114,44 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // launch the home page activity
+    /**
+     * retrieves data from the firebase about order history -- to be implemented
+     */
+    public void getOrderHistory() {
+
+    }
+
+    /**
+     * save authentication into app database
+     */
+    public void saveAuthentication(String username) {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(AUTH, true);
+        editor.putString(USERNAME, username);
+        editor.apply();
+    }
+
+    /**
+     * check if app is currently authenticated (if someone has logged in)
+     * @return if th app is currently authenticated
+     */
+    public boolean checkAuth() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return sharedPreferences.getBoolean(AUTH, false);
+    }
+
+    /**
+     * launch the home page activity
+     */
     public void launchHomePage() {
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 
-    //launch the sign up page activity
+    /**
+     * launch the sign up page activity
+     */
     public void launchSignUpPage() {
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
@@ -129,5 +183,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    /**
+     * disables the back button
+     */
+    @Override
+    public void onBackPressed() {
+        // Do nothing
     }
 }

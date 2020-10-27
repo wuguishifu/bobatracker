@@ -127,7 +127,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:background="@drawable/rounded_login_button"
+        android:background="@drawable/peach_rounded_button"
         android:fontFamily="@font/montserrat_medium"
         android:insetTop="0dp"
         android:insetBottom="0dp"

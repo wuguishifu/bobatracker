@@ -14,4 +14,7 @@
     <string name="button_login_text">Login</string>
     <string name="sign_up_button_text">Sign Up</string>
     <string name="incorrectUsernamePassword">Incorrect Username and/or Password</string>
+    <string name="order_history">Order History</string>
+    <string name="favorite_orders">Favorite Orders</string>
+    <string name="log_out">Sign Out</string>
 </resources>
