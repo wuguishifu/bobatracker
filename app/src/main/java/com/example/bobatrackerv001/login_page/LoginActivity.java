@@ -28,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private static boolean passwordIsShown;
 
     private static final String SHARED_PREFS = "sharedPrefs";
-    private static final String AUTH = "authPref";
     private static final String USERNAME = "usernamePref";
+    private static final String AUTH = "authPref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                         // save the authentication in the sharedPreferences of this app
                         saveAuthentication(username);
 
-                        // retrieve order history to populate the OrderList
-                        getOrderHistory();
-
                         // launch the home page
                         launchHomePage();
 
@@ -112,13 +109,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         });
-    }
-
-    /**
-     * retrieves data from the firebase about order history -- to be implemented
-     */
-    public void getOrderHistory() {
-
     }
 
     /**

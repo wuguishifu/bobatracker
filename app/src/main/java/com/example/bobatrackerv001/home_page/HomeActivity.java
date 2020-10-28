@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
 import com.example.bobatrackerv001.login_page.LoginActivity;
+import com.example.bobatrackerv001.order_history.OrderHistoryActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -24,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
         Button buttonOrderHistory = findViewById(R.id.button_order_history);
         Button buttonFavoriteOrders = findViewById(R.id.button_favorite_orders);
         Button buttonSignOut = findViewById(R.id.button_log_out);
+
+        buttonOrderHistory.setOnClickListener(v -> launchOrderHistoryActivity());
 
         buttonSignOut.setOnClickListener(v -> {
             removeAuthentication();
@@ -48,6 +51,11 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(AUTH, false);
         editor.apply();
+    }
+
+    public void launchOrderHistoryActivity() {
+        Intent intent = new Intent(HomeActivity.this, OrderHistoryActivity.class);
+        startActivity(intent);
     }
 
     /**

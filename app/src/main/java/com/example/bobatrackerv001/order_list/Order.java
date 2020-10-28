@@ -1,10 +1,15 @@
 package com.example.bobatrackerv001.order_list;
 
+import java.util.Objects;
+
 public class Order {
 
-    private final String order;
-    private final double price;
-    private final int    date;
+    private String order;
+    private String location;
+    private double price;
+    private int date;
+    private boolean favorite;
+    private String orderID;
 
     /**
      * default constructor
@@ -12,18 +17,42 @@ public class Order {
      * @param price - the price in form $0000.00
      * @param date  - the date in form mmddyy -> august 30 2000: 83000 (leading zeros removed)
      */
-    public Order(String order, double price, int date) {
+    public Order(String order, double price, int date, boolean isFavorite, String location) {
         this.order = order;
         this.price = price;
         this.date = date;
+        this.favorite = isFavorite;
+        this.location  = location;
     }
 
-    public String getOrderAsString() {
+    public Order() {}
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public String getOrderID() {
+        return this.orderID;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public String getOrder() {
         return this.order;
     }
 
-    public double getPriceAsDouble() {
+    public boolean getFavorite() {
+        return favorite;
+    }
+
+    public double getPrice() {
         return this.price;
+    }
+
+    public int getDate() {
+        return this.date;
     }
 
     /**
