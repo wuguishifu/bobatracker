@@ -68,7 +68,13 @@ public class Order {
      * @return the price in form $100.99
      */
     public String getPriceAsString() {
-        return "$" + price;
+        String p = "$";
+        if ((int)price * 10 == price * 10) {
+            p += price + "0";
+        } else {
+            p += price;
+        }
+        return p;
     }
 
     /**
@@ -76,9 +82,9 @@ public class Order {
      * @return the date in form mm/dd/yy
      */
     public String getDateAsString() {
-        int m = date/10000;
-        int d = (date - m * 10000)/100;
-        int y = date - m * 10000 - d * 100;
+        int y = date/10000;
+        int m = (date - y * 10000)/100;
+        int d = date - y * 10000 - m * 100;
         String month = m < 10 ? "0" + m : String.valueOf(m);
         String day   = d < 10 ? "0" + d : String.valueOf(d);
         String year  = y < 10 ? "0" + y : String.valueOf(y);

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bobatrackerv001.R;
 import com.example.bobatrackerv001.login_page.LoginActivity;
 import com.example.bobatrackerv001.order_history.OrderHistoryActivity;
+import com.example.bobatrackerv001.order_list.OrderList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -28,7 +29,9 @@ public class HomeActivity extends AppCompatActivity {
 
         buttonOrderHistory.setOnClickListener(v -> launchOrderHistoryActivity());
 
+        // sign out
         buttonSignOut.setOnClickListener(v -> {
+            OrderList.hasAlreadyLoaded = false;
             removeAuthentication();
             launchLoginActivity();
         });

@@ -17,4 +17,5 @@
     <string name="order_history">Order History</string>
     <string name="favorite_orders">Favorite Orders</string>
     <string name="log_out">Sign Out</string>
+    <string name="order_history_title">Order History</string>
 </resources>

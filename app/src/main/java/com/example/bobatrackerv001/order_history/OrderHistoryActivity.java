@@ -5,7 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,18 +25,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Map;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class OrderHistoryActivity extends AppCompatActivity {
 
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String USERNAME = "usernamePref";
 
+    private static final int orderTextViewSpaceLength = 80;
+    private static final String star = "\u2605";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
 
+        // load the data
         loadData();
 
     }
@@ -64,13 +71,19 @@ public class OrderHistoryActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void loadOrdersFromList(Iterable<DataSnapshot> orders) {
 
         // define the LinearLayout
         LinearLayout orderHistoryLinearLayout = findViewById(R.id.order_history_linearLayout_fragments);
 
-        // iterate through each order, ignoring orderID
+        // if the data has not already been loaded
+        if (!OrderList.hasAlreadyLoaded) {
+            OrderList.hasAlreadyLoaded = true;
+
+            // clear array list
+            OrderList.orders.clear();
+
+            // iterate through each order, ignoring orderID
             orders.forEach(data -> {
                 //create a bunch of new Order objects based on the data
                 Order order = data.getValue(Order.class);
@@ -79,18 +92,99 @@ public class OrderHistoryActivity extends AppCompatActivity {
                 //add the order to the static ArrayList of orders
                 OrderList.orders.add(order);
 
-                //error testing
-                //System.err.println(order);
-
-                // create a new textView for the order and add it to the linear layout
-                TextView newOrderTextView = new TextView(OrderHistoryActivity.this);
-                newOrderTextView.setTextColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.white));
-                newOrderTextView.setText(Html.fromHtml("<b>" + order.getLocation() + "</b>" +
-                        "<br />" + "<small>" + order.getDateAsString() + "</small>" + "<br />" +
-                        "<small>" + order.getOrder() + "</small>", Html.FROM_HTML_MODE_LEGACY));
-                orderHistoryLinearLayout.addView(newOrderTextView);
             });
+        }
 
+        // sort items by date
+        OrderList.orders.sort(Comparator.comparing(Order::getDate).reversed());
+
+        // iterate through every order in the list and make a TextView for it
+        for (Order order : OrderList.orders) {
+            // create the newOrderFragment
+            RelativeLayout newOrderFrag = generateOrderFragment(order);
+
+            // calculate padding
+            int paddingDp = 10;
+            float density = OrderHistoryActivity.this.getResources().getDisplayMetrics().density;
+            int paddingPixel = (int)(paddingDp * density);
+
+            // set padding
+            newOrderFrag.setPadding(0,paddingPixel,0,paddingPixel);
+            orderHistoryLinearLayout.addView(newOrderFrag);
+
+            // create the separator
+            View separator = new View(OrderHistoryActivity.this);
+            separator.setId(View.generateViewId());
+            separator.setBackgroundColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.gray1));
+            separator.setMinimumHeight(5);
+
+            orderHistoryLinearLayout.addView(separator);
+        }
+
+    }
+
+    private RelativeLayout generateOrderFragment(Order order) {
+
+        int textSize = 20;
+
+        // create new RelativeLayout
+        RelativeLayout orderFrag = new RelativeLayout(OrderHistoryActivity.this);
+
+        // setting the new RelativeLayout's params
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT
+        );
+
+        // set the RelativeLayout's view ID
+        orderFrag.setId(View.generateViewId());
+        orderFrag.setLayoutParams(layoutParams);
+
+        // setting the orderText TextView's params
+        RelativeLayout.LayoutParams orderTextLP = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+
+
+        // add the favorites star
+        String location = order.getLocation();
+        if (order.getFavorite()) {
+            location += "\t\t\t\t" + star;
+        }
+
+        // create the orderText TextView
+        TextView orderText = new TextView(OrderHistoryActivity.this);
+        orderText.setText(Html.fromHtml("<b>" + location + "</b>" +
+                "<br />" + "<small>" + order.getDateAsString() + "</small>" + "<br />" +
+                "<small>" + order.getOrder() + "</small>", Html.FROM_HTML_MODE_LEGACY));
+        orderText.setTextAlignment(TextView.TEXT_ALIGNMENT_VIEW_START);
+        orderText.setTextColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.gray1));
+        orderText.setTextSize(textSize);
+
+        // setting the priceText TextView's params
+        RelativeLayout.LayoutParams priceTextLP = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        // create the priceText TextView
+        TextView priceText = new TextView(OrderHistoryActivity.this);
+        priceText.setText(order.getPriceAsString());
+        priceText.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        priceText.setTextColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.gray1));
+        priceText.setTextSize(textSize);
+
+        // adding constraints
+        orderTextLP.addRule(RelativeLayout.START_OF, orderFrag.getId());
+        priceTextLP.addRule(RelativeLayout.ALIGN_PARENT_END, orderFrag.getId());
+
+        // adding TextViews to the RelativeLayout
+        orderFrag.addView(orderText, orderTextLP);
+        orderFrag.addView(priceText, priceTextLP);
+
+        // return
+        return orderFrag;
     }
 
     /**

@@ -5,10 +5,8 @@ import java.util.ArrayList;
 public class OrderList {
 
     public static ArrayList<Order> orders = new ArrayList<>();
+    public static boolean hasAlreadyLoaded = false;
 
-//    public static void init() {
-//        orders = new ArrayList<Order>;
-//    }
 
     /**
      * gets a specific order
