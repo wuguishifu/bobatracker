@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_title_start"
         android:layout_width="wrap_content"
@@ -85,13 +87,13 @@
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
-        android:id="@+id/email_entry"
+        android:id="@+id/password_entry"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:autofillHints=""
         android:background="@drawable/rounded_edittext"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingStart="10dp"
         android:paddingEnd="80dp"
         android:textColor="@color/gray3"
@@ -100,12 +102,12 @@
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
-        android:id="@+id/password_entry"
+        android:id="@+id/repeat_password_entry"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:autofillHints=""
         android:background="@drawable/rounded_edittext"
-        android:hint="@string/username"
+        android:hint="@string/repeat_password"
         android:inputType="textPassword"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -126,7 +128,7 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:padding="0dp"
-        android:text="@string/button_login_text"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
         android:textColor="@color/gray1"
         android:textSize="20sp"
@@ -134,5 +136,29 @@
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/guide_button_confirm"
         app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/login_error2"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/red"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toBottomOf="@id/button_confirm"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:id="@+id/button_show_password2"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        android:text="@string/show_password_button"
+        android:textAllCaps="false"
+        android:textColor="@color/peach"
+        app:layout_constraintBottom_toBottomOf="@id/password_entry"
+        app:layout_constraintEnd_toEndOf="@id/password_entry"
+        app:layout_constraintTop_toTopOf="@id/password_entry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,4 +19,5 @@
     <string name="log_out">Sign Out</string>
     <string name="order_history_title">Order History</string>
     <string name="email">Email</string>
+    <string name="repeat_password">Repeat Password</string>
 </resources>
