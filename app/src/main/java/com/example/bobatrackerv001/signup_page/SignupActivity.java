@@ -1,6 +1,8 @@
 package com.example.bobatrackerv001.signup_page;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -14,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
+import com.example.bobatrackerv001.home_page.HomeActivity;
+import com.example.bobatrackerv001.login_page.LoginActivity;
 import com.example.bobatrackerv001.login_page.OnGetDataListener;
 import com.example.bobatrackerv001.order_list.OrderHistory;
 import com.example.bobatrackerv001.user.User;
@@ -27,6 +31,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
+
+    private static final String SHARED_PREFS = "sharedPrefs";
+    private static final String USERNAME = "usernamePref";
+    private static final String AUTH = "authPref";
 
     static boolean passwordIsShown = false;
 
@@ -66,7 +74,19 @@ public class SignupActivity extends AppCompatActivity {
                         if (dataSnapshot.getValue() != null) {
                             displayUsernameTakenError();
                         } else {
+                            // generate new user and push to the Firebase Database
                             createNewUser(username[0], password[0]);
+
+                            // add user and authentication to the sharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean(AUTH, true);
+                            editor.putString(USERNAME, username[0]);
+                            editor.apply();
+
+                            // launch the home page activity
+                            Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }
                     }
 
