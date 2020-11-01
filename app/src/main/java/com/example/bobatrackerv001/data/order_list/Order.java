@@ -1,6 +1,4 @@
-package com.example.bobatrackerv001.order_list;
-
-import java.util.Objects;
+package com.example.bobatrackerv001.data.order_list;
 
 public class Order {
 

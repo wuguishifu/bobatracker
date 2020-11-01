@@ -1,6 +1,4 @@
-package com.example.bobatrackerv001.login_page;
-
-import android.util.Log;
+package com.example.bobatrackerv001.activities.login_page;
 
 import com.google.firebase.database.DataSnapshot;
 

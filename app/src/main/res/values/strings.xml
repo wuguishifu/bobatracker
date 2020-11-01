@@ -20,4 +20,9 @@
     <string name="order_history_title">Order History</string>
     <string name="email">Email</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="store_name_hint">i.e. Brie\'s Boba</string>
+    <string name="order_details_hint">i.e. Lychee Black Tea, L, Half Sweet</string>
+    <string name="date_edit_text_hint">i.e. 5/6/20</string>
+    <string name="price_edit_text_hint">i.e. 4.75</string>
+    <string name="size_hint">i.e. Large</string>
 </resources>

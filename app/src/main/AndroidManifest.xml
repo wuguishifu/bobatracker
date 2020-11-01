@@ -12,7 +12,7 @@
         android:fullBackupContent="true">
 
         <!--login page activity-->
-        <activity android:name="com.example.bobatrackerv001.login_page.LoginActivity">
+        <activity android:name=".activities.login_page.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +21,13 @@
         </activity>
 
         <!--home page activity-->
-        <activity android:name=".home_page.HomeActivity" />
+        <activity android:name=".activities.home_page.HomeActivity" />
         <!--sign up page activity-->
-        <activity android:name=".signup_page.SignupActivity" />
+        <activity android:name=".activities.signup_page.SignupActivity" />
         <!--order history page activity-->
-        <activity android:name=".order_history.OrderHistoryActivity"/>
+        <activity android:name=".activities.order_history.OrderHistoryActivity"/>
+        <!--add new order activity-->
+        <activity android:name=".activities.add_order.AddOrderActivity"/>
 
 
     </application>

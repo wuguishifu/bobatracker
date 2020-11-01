@@ -1,7 +1,6 @@
-package com.example.bobatrackerv001.order_history;
+package com.example.bobatrackerv001.activities.order_history;
 
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -11,21 +10,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.login_page.OnGetDataListener;
-import com.example.bobatrackerv001.order_list.Order;
-import com.example.bobatrackerv001.order_list.OrderList;
+import com.example.bobatrackerv001.activities.login_page.OnGetDataListener;
+import com.example.bobatrackerv001.data.order_list.Order;
+import com.example.bobatrackerv001.data.order_list.OrderList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collections;
 import java.util.Comparator;
 
 public class OrderHistoryActivity extends AppCompatActivity {
@@ -87,6 +84,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
             orders.forEach(data -> {
                 //create a bunch of new Order objects based on the data
                 Order order = data.getValue(Order.class);
+                assert order != null;
                 order.setOrderID(data.getKey());
 
                 //add the order to the static ArrayList of orders
@@ -190,7 +188,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
     /**
      * method for handling reading the password from the Firebase Database
      * @param reference - the DatabaseReference to read
-     * @param listener - a com.example.bobatrackerv001.login_page.OnGetDataListener
+     * @param listener - a com.example.bobatrackerv001.activities.login_page.OnGetDataListener
      */
     public void readData(DatabaseReference reference, final OnGetDataListener listener) {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

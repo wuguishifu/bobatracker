@@ -1,4 +1,4 @@
-package com.example.bobatrackerv001.home_page;
+package com.example.bobatrackerv001.activities.home_page;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,9 +8,10 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.login_page.LoginActivity;
-import com.example.bobatrackerv001.order_history.OrderHistoryActivity;
-import com.example.bobatrackerv001.order_list.OrderList;
+import com.example.bobatrackerv001.activities.add_order.AddOrderActivity;
+import com.example.bobatrackerv001.activities.login_page.LoginActivity;
+import com.example.bobatrackerv001.activities.order_history.OrderHistoryActivity;
+import com.example.bobatrackerv001.data.order_list.OrderList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         Button buttonSignOut = findViewById(R.id.button_log_out);
 
         buttonOrderHistory.setOnClickListener(v -> launchOrderHistoryActivity());
+        buttonAddOrder.setOnClickListener(v -> launchAddOrderActivity());
 
         // sign out
         buttonSignOut.setOnClickListener(v -> {
@@ -58,6 +60,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void launchOrderHistoryActivity() {
         Intent intent = new Intent(HomeActivity.this, OrderHistoryActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchAddOrderActivity() {
+        Intent intent = new Intent(HomeActivity.this, AddOrderActivity.class);
         startActivity(intent);
     }
 

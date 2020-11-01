@@ -1,6 +1,6 @@
-package com.example.bobatrackerv001.user;
+package com.example.bobatrackerv001.data.user;
 
-import com.example.bobatrackerv001.order_list.OrderHistory;
+import com.example.bobatrackerv001.data.order_list.OrderHistory;
 
 public class User {
 

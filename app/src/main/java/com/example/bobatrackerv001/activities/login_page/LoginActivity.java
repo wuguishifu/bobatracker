@@ -1,4 +1,4 @@
-package com.example.bobatrackerv001.login_page;
+package com.example.bobatrackerv001.activities.login_page;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,15 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.home_page.HomeActivity;
-import com.example.bobatrackerv001.signup_page.SignupActivity;
+import com.example.bobatrackerv001.activities.home_page.HomeActivity;
+import com.example.bobatrackerv001.activities.signup_page.SignupActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -160,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * method for handling reading the password from the Firebase Database
      * @param reference - the DatabaseReference to read
-     * @param listener - a com.example.bobatrackerv001.login_page.OnGetDataListener
+     * @param listener - a com.example.bobatrackerv001.activities.login_page.OnGetDataListener
      */
     public void readData(DatabaseReference reference, final OnGetDataListener listener) {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
