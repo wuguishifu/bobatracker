@@ -17,6 +17,12 @@ import java.util.Locale;
 
 public class AddOrderActivity extends AppCompatActivity {
 
+    private int date;
+    private String Location;
+    private String details;
+    private int price;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_order);

@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <TextView
         android:layout_width="0dp"
@@ -94,6 +94,7 @@
         tools:ignore="RtlHardcoded"
         android:inputType="textPersonName"
         android:autofillHints=""
+        android:fontFamily="@font/montserrat_medium"
         />
 
     <!--Order Details-->
@@ -114,6 +115,7 @@
         tools:ignore="RtlHardcoded"
         android:inputType="textPersonName"
         android:autofillHints=""
+        android:fontFamily="@font/montserrat_medium"
         />
 
     <EditText
@@ -128,12 +130,13 @@
         android:hint="@string/date_edit_text_hint"
         android:focusable="false"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintWidth_percent="0.24"
+        app:layout_constraintWidth_percent="0.38"
         app:layout_constraintTop_toTopOf="@id/top_guideline_4"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         android:inputType="none"
         android:autofillHints=""
         tools:ignore="LabelFor,RtlHardcoded,TextFields"
+        android:fontFamily="@font/montserrat_medium"
         />
 
     <EditText
@@ -147,31 +150,36 @@
         android:hint="@string/price_edit_text_hint"
         android:gravity="bottom|right"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintWidth_percent="0.24"
+        app:layout_constraintWidth_percent="0.38"
         app:layout_constraintTop_toTopOf="@id/top_guideline_4"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         android:inputType="numberDecimal"
         android:autofillHints=""
         tools:ignore="LabelFor,RtlHardcoded,TextFields"
+        android:fontFamily="@font/montserrat_medium"
         />
 
-    <EditText
-        android:background="@drawable/rounded_edittext"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:layout_height="0dp"
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="@id/top_guideline_5"
+        android:background="@drawable/favorites_button"
+        android:fontFamily="@font/montserrat_medium"
+        />
+
+    <Button
         android:layout_width="0dp"
-        android:id="@+id/size_entry"
-        android:hint="@string/size_hint"
-        android:gravity="bottom|right"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintWidth_percent="0.24"
-        app:layout_constraintTop_toTopOf="@id/top_guideline_4"
+        android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="@id/guideline_mid"
-        android:inputType="numberDecimal"
-        android:autofillHints=""
-        tools:ignore="LabelFor,RtlHardcoded,TextFields"
+        app:layout_constraintTop_toTopOf="@id/top_guideline_5"
+        android:background="@drawable/peach_rounded_button"
+        app:layout_constraintWidth_percent="0.62"
+        android:fontFamily="@font/montserrat_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/gray1"
+        android:textSize="20sp"
+        android:text="@string/add_order_button"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

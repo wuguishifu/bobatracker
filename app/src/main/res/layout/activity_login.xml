@@ -92,7 +92,8 @@
         android:textColor="@color/gray3"
         app:layout_constraintStart_toStartOf="@id/username_left"
         app:layout_constraintTop_toBottomOf="@id/username_top"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:fontFamily="@font/montserrat_medium" />
 
     <EditText
         android:id="@+id/password_entry"
@@ -107,7 +108,8 @@
         android:textColor="@color/gray3"
         app:layout_constraintStart_toStartOf="@id/username_left"
         app:layout_constraintTop_toBottomOf="@id/password_top"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:fontFamily="@font/montserrat_medium" />
 
     <Button
         android:id="@+id/button_show_password"
@@ -120,7 +122,8 @@
         android:textColor="@color/peach"
         app:layout_constraintBottom_toBottomOf="@id/password_entry"
         app:layout_constraintEnd_toEndOf="@id/password_entry"
-        app:layout_constraintTop_toTopOf="@id/password_entry" />
+        app:layout_constraintTop_toTopOf="@id/password_entry"
+        android:fontFamily="@font/montserrat_medium" />
 
     <Button
         android:id="@+id/button_login"
@@ -155,6 +158,7 @@
         style="?android:attr/borderlessButtonStyle"
         app:layout_constraintRight_toLeftOf="@id/sign_up_right"
         app:layout_constraintTop_toBottomOf="@id/sign_up_top"
+        android:fontFamily="@font/montserrat_medium"
         />
 
     <TextView
@@ -167,6 +171,7 @@
         app:layout_constraintWidth_percent=".8"
         app:layout_constraintTop_toBottomOf="@id/button_login"
         app:layout_constraintStart_toStartOf="@id/username_left"
+        android:fontFamily="@font/montserrat_medium"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

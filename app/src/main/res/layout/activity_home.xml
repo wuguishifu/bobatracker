@@ -130,6 +130,7 @@
         style="?android:attr/borderlessButtonStyle"
         app:layout_constraintRight_toLeftOf="@id/guide_end"
         app:layout_constraintTop_toBottomOf="@id/guide_log_out"
+        android:fontFamily="@font/montserrat_medium"
         />
 
 

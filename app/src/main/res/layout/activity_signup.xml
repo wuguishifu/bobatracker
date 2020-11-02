@@ -82,7 +82,8 @@
         android:textColor="@color/gray3"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/guide_username_start"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:fontFamily="@font/montserrat_medium"/>
 
     <EditText
         android:id="@+id/password_entry"
@@ -97,7 +98,8 @@
         android:textColor="@color/gray3"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/guide_email_start"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:fontFamily="@font/montserrat_medium" />
 
     <EditText
         android:id="@+id/repeat_password_entry"
@@ -112,7 +114,8 @@
         android:textColor="@color/gray3"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/guide_password_start"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:fontFamily="@font/montserrat_medium" />
 
     <Button
         android:id="@+id/button_confirm"
@@ -144,7 +147,8 @@
         android:textColor="@color/red"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/button_confirm"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintWidth_percent=".8"
+        android:fontFamily="@font/montserrat_medium" />
 
     <Button
         android:id="@+id/button_show_password2"
@@ -157,6 +161,7 @@
         android:textColor="@color/peach"
         app:layout_constraintBottom_toBottomOf="@id/password_entry"
         app:layout_constraintEnd_toEndOf="@id/password_entry"
-        app:layout_constraintTop_toTopOf="@id/password_entry" />
+        app:layout_constraintTop_toTopOf="@id/password_entry"
+        android:fontFamily="@font/montserrat_medium" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

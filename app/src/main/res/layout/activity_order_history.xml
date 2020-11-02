@@ -78,12 +78,14 @@
         app:layout_constraintStart_toStartOf="@id/activity_start"
         app:layout_constraintTop_toTopOf="@id/scroll_view_top"
         app:layout_constraintWidth_percent=".9"
-        app:layout_constraintHeight_percent=".65" >
+        app:layout_constraintHeight_percent=".65"
+        android:fontFamily="@font/montserrat_medium" >
         <LinearLayout
             android:id="@+id/order_history_linearLayout_fragments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:fontFamily="@font/montserrat_medium"
             />
     </ScrollView>
 
