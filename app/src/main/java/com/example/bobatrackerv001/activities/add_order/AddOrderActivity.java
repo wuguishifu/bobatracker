@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class AddOrderActivity extends AppCompatActivity {
 
-    private int date;
+    private int dateAsInt;
     private String Location;
     private String details;
     private int price;
@@ -106,6 +106,9 @@ public class AddOrderActivity extends AppCompatActivity {
             String myFormat = "MM/dd/yy";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
             enterDateEditText.setText(sdf.format(calendarPicker.getTime()));
+
+            // add date to int conversion here using Calendar.get(Calendar.YEAR()) etc.
+
         };
         enterDateEditText.setOnClickListener(v -> new DatePickerDialog(AddOrderActivity.this, date,
                 calendarPicker.get(Calendar.YEAR), calendarPicker.get(Calendar.MONTH),
