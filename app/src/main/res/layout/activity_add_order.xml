@@ -169,6 +169,7 @@
         />
 
     <Button
+        android:id="@+id/button_add_order"
         android:layout_width="0dp"
         android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="@id/guideline_mid"

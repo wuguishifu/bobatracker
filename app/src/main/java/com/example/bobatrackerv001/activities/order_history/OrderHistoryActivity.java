@@ -85,7 +85,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
                 //create a bunch of new Order objects based on the data
                 Order order = data.getValue(Order.class);
                 assert order != null;
-                order.setOrderID(data.getKey());
 
                 //add the order to the static ArrayList of orders
                 OrderList.orders.add(order);
@@ -153,8 +152,26 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
         // create the orderText TextView
         TextView orderText = new TextView(OrderHistoryActivity.this);
+
+        int dateAsInt = order.getDate();
+        int y = dateAsInt/10000;
+        int m = (dateAsInt - y * 10000)/100;
+        int d = dateAsInt - y * 10000 - m * 100;
+        String month = m < 10 ? "0" + m : String.valueOf(m);
+        String day   = d < 10 ? "0" + d : String.valueOf(d);
+        String year  = y < 10 ? "0" + y : String.valueOf(y);
+        String dateAsString =  month + "/" + day + "/" + year;
+
+        double priceAsDouble = order.getPrice();
+        String priceAsString = "$";
+        if ((int)priceAsDouble * 10 == priceAsDouble * 10) {
+            priceAsString += priceAsDouble + "0";
+        } else {
+            priceAsString += priceAsDouble;
+        }
+
         orderText.setText(Html.fromHtml("<b>" + location + "</b>" +
-                "<br />" + "<small>" + order.getDateAsString() + "</small>" + "<br />" +
+                "<br />" + "<small>" + dateAsString + "</small>" + "<br />" +
                 "<small>" + order.getOrder() + "</small>", Html.FROM_HTML_MODE_LEGACY));
         orderText.setTextAlignment(TextView.TEXT_ALIGNMENT_VIEW_START);
         orderText.setTextColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.gray1));
@@ -168,7 +185,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
         // create the priceText TextView
         TextView priceText = new TextView(OrderHistoryActivity.this);
-        priceText.setText(order.getPriceAsString());
+        priceText.setText(priceAsString);
         priceText.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
         priceText.setTextColor(ContextCompat.getColor(OrderHistoryActivity.this, R.color.gray1));
         priceText.setTextSize(textSize);
