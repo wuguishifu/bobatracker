@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             String username = usernameEntry.getText().toString();
             String password = passwordEntry.getText().toString();
 
-            readData(FirebaseDatabase.getInstance().getReference("users/" + username + "/pwd"), new OnGetDataListener() {
+            readData(FirebaseDatabase.getInstance().getReference("users/" + username + "/password"), new OnGetDataListener() {
                 @Override
                 public void onSuccess(DataSnapshot passwordSnapshot) {
                     if (passwordSnapshot.getValue() != null && passwordSnapshot.getValue().toString().equals(password)) {
