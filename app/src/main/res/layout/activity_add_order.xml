@@ -160,8 +160,13 @@
         />
 
     <Button
+        android:id="@+id/favorite_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:text="@string/star_symbol"
+        android:textSize="40sp"
+        android:textColor="@color/gray2"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="@id/top_guideline_5"
         android:background="@drawable/favorites_button"

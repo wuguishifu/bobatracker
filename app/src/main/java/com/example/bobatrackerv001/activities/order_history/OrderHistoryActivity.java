@@ -143,13 +143,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
 
-
-        // add the favorites star
-        String location = order.getLocation();
-        if (order.getFavorite()) {
-            location += "\t\t\t\t" + star;
-        }
-
         // create the orderText TextView
         TextView orderText = new TextView(OrderHistoryActivity.this);
 
@@ -170,7 +163,12 @@ public class OrderHistoryActivity extends AppCompatActivity {
             priceAsString += priceAsDouble;
         }
 
-        orderText.setText(Html.fromHtml("<b>" + location + "</b>" +
+        // add the favorite drink star symbol
+        if (order.getFavorite()) {
+            priceAsString = star + "\t\t" + priceAsString;
+        }
+
+        orderText.setText(Html.fromHtml("<b>" + order.getLocation() + "</b>" +
                 "<br />" + "<small>" + dateAsString + "</small>" + "<br />" +
                 "<small>" + order.getOrder() + "</small>", Html.FROM_HTML_MODE_LEGACY));
         orderText.setTextAlignment(TextView.TEXT_ALIGNMENT_VIEW_START);

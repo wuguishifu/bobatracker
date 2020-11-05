@@ -13,10 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.bobatrackerv001.R;
 import com.example.bobatrackerv001.activities.home_page.HomeActivity;
 import com.example.bobatrackerv001.activities.login_page.LoginActivity;
+import com.example.bobatrackerv001.activities.order_history.OrderHistoryActivity;
 import com.example.bobatrackerv001.activities.signup_page.SignupActivity;
 import com.example.bobatrackerv001.data.order_list.Order;
 import com.example.bobatrackerv001.data.order_list.OrderHistory;
@@ -30,6 +32,8 @@ import java.util.Locale;
 public class AddOrderActivity extends AppCompatActivity {
 
     private int dateAsInt;
+    private boolean isFavorite;
+    private boolean dateHasBeenSelected = false;
 
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String USERNAME = "usernamePref";
@@ -111,6 +115,7 @@ public class AddOrderActivity extends AppCompatActivity {
         final Calendar calendarPicker = Calendar.getInstance();
         EditText enterDateEditText = findViewById(R.id.date_entry);
         DatePickerDialog.OnDateSetListener date = (view, year, month, dayOfMonth) -> {
+            dateHasBeenSelected = true;
             calendarPicker.set(Calendar.YEAR, year);
             calendarPicker.set(Calendar.MONTH, month);
             calendarPicker.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -119,7 +124,7 @@ public class AddOrderActivity extends AppCompatActivity {
             enterDateEditText.setText(sdf.format(calendarPicker.getTime()));
 
             int yearAsValue = 10000 * (calendarPicker.get(Calendar.YEAR) % 100);
-            int monthAsValue = 100 * (calendarPicker.get(Calendar.MONTH));
+            int monthAsValue = 100 * (calendarPicker.get(Calendar.MONTH) + 1);
             dateAsInt = yearAsValue + monthAsValue + calendarPicker.get(Calendar.DAY_OF_MONTH);
 
             // add date to int conversion here using Calendar.get(Calendar.YEAR()) etc.
@@ -149,13 +154,35 @@ public class AddOrderActivity extends AppCompatActivity {
             }
         });
 
+        // favorite button toggle
+        Button favoriteButton = findViewById(R.id.favorite_button);
+        favoriteButton.setOnClickListener(v -> {
+            if (isFavorite) {
+                isFavorite = false;
+                favoriteButton.setTextColor(ContextCompat.getColor(AddOrderActivity.this, R.color.gray2));
+            } else {
+                isFavorite = true;
+                favoriteButton.setTextColor(ContextCompat.getColor(AddOrderActivity.this, R.color.peach));
+            }
+        });
+
+
+        // confirm button
         Button confirm = findViewById(R.id.button_add_order);
         confirm.setOnClickListener(v -> {
+            if (!dateHasBeenSelected) {
+                Calendar calendar = Calendar.getInstance();
+                int yearAsValue = 10000 * (calendar.get(Calendar.YEAR) % 100);
+                int monthAsValue = 100  * (calendar.get(Calendar.MONTH) + 1);
+                dateAsInt = yearAsValue + monthAsValue + calendar.get(Calendar.DAY_OF_MONTH);
+            }
+
             Order order = new Order();
             order.setDate(dateAsInt);
             order.setLocation(storeNameEditText.getText().toString());
             order.setOrder(orderDetailsEditText.getText().toString());
             order.setPrice(Double.parseDouble(priceEditText.getText().toString()));
+            order.setFavorite(isFavorite);
 
 
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
