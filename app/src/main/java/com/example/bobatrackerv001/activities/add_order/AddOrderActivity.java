@@ -178,12 +178,25 @@ public class AddOrderActivity extends AppCompatActivity {
             }
 
             Order order = new Order();
-            order.setDate(dateAsInt);
-            order.setLocation(storeNameEditText.getText().toString());
-            order.setOrder(orderDetailsEditText.getText().toString());
-            order.setPrice(Double.parseDouble(priceEditText.getText().toString()));
-            order.setFavorite(isFavorite);
 
+            // set the date
+            order.setDate(dateAsInt);
+
+            // set the price
+            if (priceEditText.getText().toString().equals("")) {
+                order.setPrice(0);
+            } else {
+                order.setPrice(Double.parseDouble(priceEditText.getText().toString()));
+            }
+
+            // set the location
+            order.setLocation(storeNameEditText.getText().toString());
+
+            // set the order details
+            order.setOrder(orderDetailsEditText.getText().toString());
+
+            // set if the order is favorite
+            order.setFavorite(isFavorite);
 
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
             String user = sharedPreferences.getString(USERNAME, null);

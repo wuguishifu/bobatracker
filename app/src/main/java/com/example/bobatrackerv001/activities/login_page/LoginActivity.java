@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             readData(FirebaseDatabase.getInstance().getReference("users/" + username + "/pwd"), new OnGetDataListener() {
                 @Override
                 public void onSuccess(DataSnapshot passwordSnapshot) {
-                    System.out.println("Found password");
                     if (passwordSnapshot.getValue() != null && passwordSnapshot.getValue().toString().equals(password)) {
                         // if the password is correct, launch the new activity
                         Log.d("SUCCESS", "Launching Home Page");
