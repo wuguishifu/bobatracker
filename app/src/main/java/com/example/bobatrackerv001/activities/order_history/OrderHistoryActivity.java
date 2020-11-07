@@ -134,14 +134,15 @@ public class OrderHistoryActivity extends AppCompatActivity {
         );
 
         // set the RelativeLayout's view ID
-        orderFrag.setId(View.generateViewId());
-        orderFrag.setLayoutParams(layoutParams);
+        orderFrag.setId(View.generateViewId()); //generate id
+        orderFrag.setLayoutParams(layoutParams); // set the layout params
 
         // setting the orderText TextView's params
         RelativeLayout.LayoutParams orderTextLP = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+                RelativeLayout.LayoutParams.WRAP_CONTENT, // horizontal
+                RelativeLayout.LayoutParams.WRAP_CONTENT // vertical
         );
+
 
         // create the orderText TextView
         TextView orderText = new TextView(OrderHistoryActivity.this);
