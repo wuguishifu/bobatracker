@@ -28,6 +28,8 @@
         <activity android:name=".activities.order_history.OrderHistoryActivity"/>
         <!--add new order activity-->
         <activity android:name=".activities.add_order.AddOrderActivity"/>
+        <!--personal info activity-->
+        <activity android:name=".activities.personal_info.PersonalInfoActivity"/>
 
 
     </application>
