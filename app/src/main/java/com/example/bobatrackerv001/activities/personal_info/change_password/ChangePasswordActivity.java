@@ -1,4 +1,4 @@
-package com.example.bobatrackerv001.activities.change_username;
+package com.example.bobatrackerv001.activities.personal_info.change_password;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
 
-public class ChangeUsernameActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
 
     private String newUsername;
     private String password;
@@ -14,7 +14,7 @@ public class ChangeUsernameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_username);
+        setContentView(R.layout.activity_new_password);
 
     }
 

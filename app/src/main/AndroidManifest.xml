@@ -31,7 +31,9 @@
         <!--personal info activity-->
         <activity android:name=".activities.personal_info.PersonalInfoActivity"/>
         <!--change username activity-->
-        <activity android:name=".activities.change_username.ChangeUsernameActivity"/>
+        <activity android:name=".activities.personal_info.change_username.ChangeUsernameActivity"/>
+        <!--change password activity-->
+        <activity android:name=".activities.personal_info.change_password.ChangePasswordActivity"/>
 
 
     </application>
