@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,12 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.activities.home_page.HomeActivity;
-import com.example.bobatrackerv001.activities.login_page.LoginActivity;
-import com.example.bobatrackerv001.activities.order_history.OrderHistoryActivity;
-import com.example.bobatrackerv001.activities.signup_page.SignupActivity;
+import com.example.bobatrackerv001.activities.main_page.home_page.HomeActivity;
 import com.example.bobatrackerv001.data.order_list.Order;
-import com.example.bobatrackerv001.data.order_list.OrderHistory;
 import com.example.bobatrackerv001.data.order_list.OrderList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".activities.login_page.LoginActivity">
+    tools:context=".activities.main_page.login_page.LoginActivity">
 
 
     <androidx.constraintlayout.widget.Guideline

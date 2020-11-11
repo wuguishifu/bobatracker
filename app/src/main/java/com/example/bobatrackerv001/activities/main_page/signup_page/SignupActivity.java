@@ -1,4 +1,4 @@
-package com.example.bobatrackerv001.activities.signup_page;
+package com.example.bobatrackerv001.activities.main_page.signup_page;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.activities.home_page.HomeActivity;
-import com.example.bobatrackerv001.activities.login_page.OnGetDataListener;
+import com.example.bobatrackerv001.activities.main_page.home_page.HomeActivity;
+import com.example.bobatrackerv001.activities.main_page.login_page.OnGetDataListener;
 import com.example.bobatrackerv001.data.order_list.OrderHistory;
 import com.example.bobatrackerv001.data.user.User;
 import com.google.firebase.database.DataSnapshot;
@@ -147,7 +147,7 @@ public class SignupActivity extends AppCompatActivity {
     /**
      * method for handling reading the password from the Firebase Database
      * @param reference - the DatabaseReference to read
-     * @param listener - a com.example.bobatrackerv001.activities.login_page.OnGetDataListener
+     * @param listener - a com.example.bobatrackerv001.activities.main_page.login_page.OnGetDataListener
      */
     public void readData(DatabaseReference reference, final OnGetDataListener listener) {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

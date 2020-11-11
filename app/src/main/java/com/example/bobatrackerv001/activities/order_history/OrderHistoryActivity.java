@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.bobatrackerv001.R;
-import com.example.bobatrackerv001.activities.login_page.OnGetDataListener;
+import com.example.bobatrackerv001.activities.main_page.login_page.OnGetDataListener;
 import com.example.bobatrackerv001.data.order_list.Order;
 import com.example.bobatrackerv001.data.order_list.OrderList;
 import com.google.firebase.database.DataSnapshot;
@@ -204,7 +204,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
     /**
      * method for handling reading the password from the Firebase Database
      * @param reference - the DatabaseReference to read
-     * @param listener - a com.example.bobatrackerv001.activities.login_page.OnGetDataListener
+     * @param listener - a com.example.bobatrackerv001.activities.main_page.login_page.OnGetDataListener
      */
     public void readData(DatabaseReference reference, final OnGetDataListener listener) {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

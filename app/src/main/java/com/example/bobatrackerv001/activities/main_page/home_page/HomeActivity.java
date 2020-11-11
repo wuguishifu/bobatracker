@@ -1,4 +1,4 @@
-package com.example.bobatrackerv001.activities.home_page;
+package com.example.bobatrackerv001.activities.main_page.home_page;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bobatrackerv001.R;
 import com.example.bobatrackerv001.activities.add_order.AddOrderActivity;
-import com.example.bobatrackerv001.activities.login_page.LoginActivity;
+import com.example.bobatrackerv001.activities.main_page.login_page.LoginActivity;
 import com.example.bobatrackerv001.activities.order_history.OrderHistoryActivity;
 import com.example.bobatrackerv001.data.order_list.OrderList;
 
